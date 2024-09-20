@@ -94,7 +94,7 @@ def pedir_estrutura():
 
 # Função para adicionar o item ao menu
 def add_menu_item():
-    action = QAction("Create Deck Structure", mw)
+    action = QAction("Mass Deck Creation", mw)
     action.triggered.connect(pedir_estrutura)
     mw.form.menuTools.addAction(action)
 

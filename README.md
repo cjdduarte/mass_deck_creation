@@ -18,23 +18,20 @@ Deck2::Subdeck1
 
 This will create two main decks, **Deck1** and **Deck2**, each with subdecks as shown in the structure.
 
-<img src="https://i.ibb.co/KD4PZD2/image.png" alt="Mass Deck Creation Example"><br>
-
 <img src="https://i.ibb.co/XtBX6TF/image.png" alt="Result"><br>
-
-
-<b>#### Configuration option:</b>
-
-There are no specific configuration options for this addon. However, the dialog allows you to input your custom deck structure directly. Simply follow the `::` notation to indicate subdecks.
 
 <b>#### How to Use:</b>
 
 1. After installing the addon, navigate to the **Tools** menu in Anki.
 2. Select **Mass Deck Creation** from the dropdown.
+
+<img src="https://i.ibb.co/SXV4wpS/image.png" alt="Mass Deck Creation in Tools Menu"><br>
+
 3. A dialog will appear where you can input the deck structure you want to create. You can also use the example structure provided in the dialog as a guide.
 4. Click **OK** to create the decks in Anki.
 
-<img src="https://i.ibb.co/SXV4wpS/image.png" alt="Mass Deck Creation in Tools Menu"><br>
+<img src="https://i.ibb.co/KD4PZD2/image.png" alt="Mass Deck Creation Example"><br>
+
 
 <b>#### Information</b>
 
@@ -47,5 +44,6 @@ Source in    | https://github.com/cjdduarte/mass_deck_creation
 <b> #### Change Log:</b>
 
 <ul>
+  <li>v1.1 - 2024-09-20 + User input preserved when reopening after structure error</li>
   <li>v1.0 - 2024-09-20 + Initial Release</li>
 </ul>

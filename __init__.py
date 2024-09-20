@@ -6,19 +6,16 @@ from aqt.qt import QAction, QDialog, QVBoxLayout, QTextEdit, QPushButton, QHBoxL
 def validar_estrutura(estrutura):
     lines = estrutura.strip().split("\n")
     for line in lines:
-        # Verifica se há uso incorreto do "::" (por exemplo, "::Deck" ou "Deck::")
-        if "::" in line:
-            if line.startswith("::") or line.endswith("::"):
-                return False
         # Verifica se o nome do deck está vazio
         if len(line.strip()) == 0:
             return False
-        # Verifica se há um ou mais de dois ":"
-        num_colons = line.count(":")
-        if num_colons == 1 or num_colons > 2:
-            # Pergunta ao usuário se deseja continuar mesmo assim
-            if not askUser(f'The deck "{line}" contains {num_colons} colon(s). '
-                           f'The standard is "::". Do you want to continue with this format?'):
+        
+        # Verifica se há um uso inválido de ":" (somente um ":" ou mais de dois ":::" ou "::" no início/fim)
+        if line.startswith("::") or line.endswith("::") or line.endswith(":") or ":::" in line or ":" in line and "::" not in line:
+            # Pergunta ao usuário se deseja continuar com o formato incorreto
+            if not askUser(f'The deck "{line}" contains an invalid number of colons (either ":" or ":::" are not allowed, '
+                           'and "::" cannot be at the start or end).\n\n'
+                           'Do you want to edit the structure and correct the format?'):
                 return False
     return True
 
@@ -39,7 +36,8 @@ def criar_decks(estrutura):
     showInfo("Decks created successfully!")
 
 # Função para exibir o diálogo de entrada de múltiplas linhas
-def pedir_estrutura():
+# Agora passa o texto anterior para reutilizar caso o usuário queira voltar para edição
+def pedir_estrutura(texto_anterior=None):
     # Criar um diálogo personalizado
     dialog = QDialog(mw)
     dialog.setWindowTitle("Enter the Deck Structure")
@@ -47,8 +45,8 @@ def pedir_estrutura():
     # Layout do diálogo
     layout = QVBoxLayout()
     
-    # Texto de exemplo
-    exemplo_estrutura = (
+    # Usa o texto anterior se for fornecido, senão usa o exemplo padrão
+    exemplo_estrutura = texto_anterior if texto_anterior else (
         "Deck1::Subdeck1\n"
         "Deck1::Subdeck2\n"
         "Deck2\n"
@@ -90,7 +88,8 @@ def pedir_estrutura():
         if validar_estrutura(estrutura):
             criar_decks(estrutura)
         else:
-            showWarning("The structure is invalid. Please follow the correct format.")
+            # Reabre o diálogo de edição com o texto inserido pelo usuário
+            pedir_estrutura(estrutura)
 
 # Função para adicionar o item ao menu
 def add_menu_item():

@@ -33,6 +33,8 @@ This will create two main decks, **Deck1** and **Deck2**, each with subdecks as 
 
 4. Click **OK** to create the decks in Anki.
 
+<img src="https://i.ibb.co/XtBX6TF/image.png" alt="Result"><br>
+
 <b>#### Information</b>
 
 Copyright(C)    | Your Name

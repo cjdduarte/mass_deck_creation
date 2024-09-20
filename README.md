@@ -34,7 +34,7 @@ There are no specific configuration options for this addon. However, the dialog 
 3. A dialog will appear where you can input the deck structure you want to create. You can also use the example structure provided in the dialog as a guide.
 4. Click **OK** to create the decks in Anki.
 
-<img src="https://i.ibb.co/8jKdYNJ/image.png" alt="Mass Deck Creation in Tools Menu"><br>
+<img src="https://i.ibb.co/SXV4wpS/image.png" alt="Mass Deck Creation in Tools Menu"><br>
 
 <b>#### Information</b>
 

@@ -28,10 +28,10 @@ This will create two main decks, **Deck1** and **Deck2**, each with subdecks as 
 <img src="https://i.ibb.co/SXV4wpS/image.png" alt="Mass Deck Creation in Tools Menu"><br>
 
 3. A dialog will appear where you can input the deck structure you want to create. You can also use the example structure provided in the dialog as a guide.
-4. Click **OK** to create the decks in Anki.
 
 <img src="https://i.ibb.co/KD4PZD2/image.png" alt="Mass Deck Creation Example"><br>
 
+4. Click **OK** to create the decks in Anki.
 
 <b>#### Information</b>
 

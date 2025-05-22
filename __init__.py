@@ -1,6 +1,7 @@
 from aqt import mw
 from aqt.utils import showInfo, showWarning, askUser
 from aqt.qt import QAction, QDialog, QVBoxLayout, QTextEdit, QPushButton, QHBoxLayout
+from .translations import tr
 
 # Função para validar a estrutura inserida pelo usuário
 def validar_estrutura(estrutura):
@@ -11,11 +12,10 @@ def validar_estrutura(estrutura):
             return False
         
         # Verifica se há um uso inválido de ":" (somente um ":" ou mais de dois ":::" ou "::" no início/fim)
-        if line.startswith("::") or line.endswith("::") or line.endswith(":") or ":::" in line or ":" in line and "::" not in line:
+        if line.startswith("::") or line.endswith("::") or line.endswith(":") or ":::" in line or (":" in line and "::" not in line):
             # Pergunta ao usuário se deseja continuar com o formato incorreto
-            if not askUser(f'The deck "{line}" contains an invalid number of colons (either ":" or ":::" are not allowed, '
-                           'and "::" cannot be at the start or end).\n\n'
-                           'Do you want to edit the structure and correct the format?'):
+            if not askUser(tr("invalid_colon_warning_message", line=line),
+                           title=tr("invalid_colon_warning_title")):
                 return False
     return True
 
@@ -33,25 +33,20 @@ def criar_decks(estrutura):
 
     # Atualiza a interface do Anki para mostrar os novos decks
     mw.reset()
-    showInfo("Decks created successfully!")
+    showInfo(tr("decks_created_successfully"))
 
 # Função para exibir o diálogo de entrada de múltiplas linhas
 # Agora passa o texto anterior para reutilizar caso o usuário queira voltar para edição
 def pedir_estrutura(texto_anterior=None):
     # Criar um diálogo personalizado
     dialog = QDialog(mw)
-    dialog.setWindowTitle("Enter the Deck Structure")
+    dialog.setWindowTitle(tr("dialog_title_enter_deck_structure"))
     
     # Layout do diálogo
     layout = QVBoxLayout()
     
-    # Usa o texto anterior se for fornecido, senão usa o exemplo padrão
-    exemplo_estrutura = texto_anterior if texto_anterior else (
-        "Deck1::Subdeck1\n"
-        "Deck1::Subdeck2\n"
-        "Deck2\n"
-        "Deck2::Subdeck1"
-    )
+    # Usa o texto anterior se for fornecido, senão usa o exemplo padrão traduzido
+    exemplo_estrutura = texto_anterior if texto_anterior else tr("example_deck_structure")
     
     # Caixa de texto multilinha
     text_edit = QTextEdit()
@@ -62,11 +57,11 @@ def pedir_estrutura(texto_anterior=None):
     button_layout = QHBoxLayout()
 
     # Botão OK
-    btn_ok = QPushButton("OK")
+    btn_ok = QPushButton(tr("button_ok"))
     button_layout.addWidget(btn_ok)
 
     # Botão Cancelar
-    btn_cancel = QPushButton("Cancel")
+    btn_cancel = QPushButton(tr("button_cancel"))
     button_layout.addWidget(btn_cancel)
 
     # Adicionar o layout de botões ao layout principal
@@ -93,7 +88,7 @@ def pedir_estrutura(texto_anterior=None):
 
 # Função para adicionar o item ao menu
 def add_menu_item():
-    action = QAction("Mass Deck Creation", mw)
+    action = QAction(tr("menu_action_mass_deck_creation"), mw)
     action.triggered.connect(pedir_estrutura)
     mw.form.menuTools.addAction(action)
 

@@ -46,6 +46,7 @@ Source in    | https://github.com/cjdduarte/mass_deck_creation
 <b> #### Change Log:</b>
 
 <ul>
+  <li>v1.2 - 2025-05-22 + Added internationalization support (en, pt-BR)</li>
   <li>v1.1 - 2024-09-20 + User input preserved when reopening after structure error</li>
   <li>v1.0 - 2024-09-20 + Initial Release</li>
 </ul>

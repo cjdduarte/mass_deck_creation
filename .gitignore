@@ -1,0 +1,22 @@
+# Ignora arquivos e pastas de cache do Python
+__pycache__/
+template_para_traducao/
+*.pyc
+*.pyo
+
+# Ignora todas as pastas ocultas (ex: .vscode, .idea)
+.*/*
+
+# Ignora arquivos temporários de sistema
+*.swp
+*.swo
+*.bak
+*.tmp
+*.zip
+
+# Ignora arquivos de backup do editor
+*~
+
+# Ignora arquivos de configuração do Anki (se necessário)
+*.anki2
+collection.anki2
